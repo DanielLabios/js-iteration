@@ -24,7 +24,7 @@
  */
 
 const yelling = words => {
-  // Your code here
+  return words.map(word => word.toUpperCase())
 }
 
 /**
@@ -36,7 +36,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const doubleTrouble = numbers => {
+  return numbers.map(number => number * 2)
+}
 // ...
 
 /*
@@ -47,6 +49,8 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
+const stringyIndexes = strings =>
+  strings.map((name, index) => `${name} is at index ${index}`)
 
 // ...
 
@@ -57,7 +61,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const onlyTheEvenSurvive = numbers => {
+  return numbers.filter(number => number % 2 === 0)
+}
 // ...
 
 /*
@@ -67,7 +73,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const onlyTheEvenIndexedSurvive = numbers => {
+  return numbers.filter((number, index) => index % 2 === 0)
+}
 // ...
 
 /*
@@ -86,7 +94,11 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const bestMoviesOfTheYear = (movies, year) => {
+  return movies
+    .filter(movie => movie.year === year && movie.score > 90)
+    .map(movie => movie.name)
+}
 // ...
 
 /*
@@ -97,7 +109,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const everyoneIsOdd = numbers => {
+  return numbers.every(number => number % 2 === 1)
+}
 // ...
 
 /*
@@ -108,7 +122,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const findTheNeedle = strings => {
+  return strings.find(string => string.includes('needle'))
+}
 // ...
 
 /*
@@ -119,7 +135,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+const findTheNeedleIndex = strings => {
+  return strings.findIndex(string => string.includes('needle'))
+}
 // ...
 
 /*
@@ -130,7 +148,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+function someoneToLove(strings) {
+  return strings.some(string => string.length === 4)
+}
 // ...
 
 /*
@@ -166,9 +186,12 @@ const yelling = words => {
  *
  */
 
-// function objectKeys(objectOfHobbies) {
-//   // Your code here
-// }
+function objectKeys(objectOfHobbies) {
+  const objectName = Object.keys(objectOfHobbies)
+  return objectName.map(
+    (object, index) => `${object} - ${objectOfHobbies[objectName[index]].title}`
+  )
+}
 
 // ...
 
@@ -242,7 +265,7 @@ const tests = [
     }
   },
   {
-    methodName: 'stringyIndex',
+    methodName: 'stringyIndexes',
     test: () => {
       return compare(stringyIndexes(['how', 'now', 'brown', 'cow']), [
         'how is at index 0',
@@ -264,7 +287,7 @@ const tests = [
     }
   },
   {
-    methodName: 'onlyTheEvenIndexSurvive',
+    methodName: 'onlyTheEvenIndexedSurvive',
     test: () => {
       return compare(
         onlyTheEvenIndexedSurvive([
@@ -428,7 +451,7 @@ const tests = [
       const answer = Object.keys(objectOfHobbies).map(
         key => `${key} - ${objectOfHobbies[key].title}`
       )
-      return compare(objectKeys(objectKeys), answer)
+      return compare(objectKeys(objectOfHobbies), answer)
     }
   }
 ]
